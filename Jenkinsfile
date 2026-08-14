@@ -11,17 +11,27 @@ pipeline{
 
 
     stage('Terraform Init'){
-  steps {
-    withCredentials([
-      [$class: 'AmazonWebServicesCredentialsBinding',
-       credentialsId: 'AWS_Tokens_Jiten']
-    ]) {
-      sh 'terraform init'
-    }
-  }
+      steps {
+        withCredentials([
+          [$class: 'AmazonWebServicesCredentialsBinding',
+          credentialsId: 'AWS_Tokens_Jiten']
+        ]) {
+          sh 'terraform init'
+        }
+      }
 }
 
-    
+    stage('Terraform State List') {
+        steps {
+            withCredentials([
+                [$class: 'AmazonWebServicesCredentialsBinding',
+                credentialsId: 'AWS_Tokens_Jiten']
+            ]) {
+                sh 'terraform state list'
+            }
+        }
+    }
+        
 
     stage('Terraform Validate'){
       steps{
