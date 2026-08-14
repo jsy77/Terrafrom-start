@@ -9,12 +9,17 @@ pipeline{
       }
     }
 
+
     stage('Terraform Init'){
-      steps {
-        
-        sh 'terraform init'
-      }
+  steps {
+    withCredentials([
+      [$class: 'AmazonWebServicesCredentialsBinding',
+       credentialsId: 'AWS_Tokens_Jiten']
+    ]) {
+      sh 'terraform init'
     }
+  }
+}
 
     
 
