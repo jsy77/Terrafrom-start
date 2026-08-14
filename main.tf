@@ -36,7 +36,7 @@ resource "aws_security_group" "ec2_sg" {
   }
   tags = {
     Name               = var.sg_name
-    ResourceAttachedto = nothing
+    ResourceAttachedto = "nothing"
     usedfor            = var.usedfor
   }
 
