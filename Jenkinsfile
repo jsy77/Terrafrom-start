@@ -16,7 +16,7 @@ pipeline{
           [$class: 'AmazonWebServicesCredentialsBinding',
           credentialsId: 'AWS_Tokens_Jiten']
         ]) {
-          sh 'terraform init'
+          sh 'terraform init -reconfigure'
         }
       }
 }
