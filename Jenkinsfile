@@ -65,10 +65,14 @@ pipeline{
              credentialsId: 'AWS_Tokens_Jiten']
         ]) {
             sh 'terraform apply -auto-approve tfplan'
+            }
+      }
+      }
+     stage('Cleanup Workspace') {
+       steps {
+         deleteDir()
         }
-    }
-}
-
+      }
     
   }
 }
