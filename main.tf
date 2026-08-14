@@ -5,6 +5,10 @@ terraform {
     region = "ap-south-1"
   }
 }
+provider "aws" {
+  region = var.aws_region
+}
+
 
 resource "aws_security_group" "ec2_sg" {
   description = "public-client-sg"
